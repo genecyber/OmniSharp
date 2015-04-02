@@ -14,16 +14,16 @@ namespace OmniSharp.tx
          * Creates a hex-encoded raw transaction of type 0: "Simple Send".
          */
         public String createSimpleSendHex(CurrencyID currencyId, long amount) {
-            String rawTxHex = String.Format("00000000{0:D8}{1}", currencyId.longValue(), amount.ToHex16()).ToLower();
-            return rawTxHex;
+            String rawTxHex = String.Format("00000000{0:D8}{1}", currencyId.longValue(), amount.ToHex16());
+            return rawTxHex.ToLower();
         }
 
         /**
          * Creates a hex-encoded raw transaction of type 3: "send to owners".
          */
         public String createSendToOwnersHex(CurrencyID currencyId, long amount) {
-            String rawTxHex = String.Format("00000003{0}{1}", currencyId.longValue(), amount);
-            return rawTxHex;
+            String rawTxHex = String.Format("00000003{0:D8}{1}", currencyId.longValue(), amount.ToHex16());
+            return rawTxHex.ToLower();
         }
 
         /**
@@ -39,17 +39,19 @@ namespace OmniSharp.tx
          * @param action
          * @return
          */
+
         public String createDexSellOfferHex(CurrencyID currencyId, long amountForSale, long amountDesired,
-                                            Byte paymentWindow, long commitmentFee, Byte action) {
-            String rawTxHex = String.Format("00010014{0}{1}{2}{3}{4}{5}",
-                    currencyId.longValue(),
-                    amountForSale,
-                    amountDesired,
-                    paymentWindow,
-                    commitmentFee,
-                    action);
+            Byte paymentWindow, long commitmentFee, Byte action)
+        {
+            String rawTxHex = String.Format("00010014{0:D8}{1}{2}{3}{4}{5}",
+                currencyId.longValue(),
+                amountForSale.ToHex16(),
+                amountDesired.ToHex16(),
+                paymentWindow,
+                commitmentFee.ToHex16(),
+                action);
             return rawTxHex;
-                                            }
+        }
 
         /**
          * Creates a hex-encoded raw transaction of type 50: "create property with fixed supply".
@@ -57,49 +59,26 @@ namespace OmniSharp.tx
         public String createPropertyHex(Ecosystem ecosystem, PropertyType propertyType, long previousPropertyId,
                                  String category, String subCategory, String label, String website, String info,
                                  long amount) {
-            String rawTxHex = String.Format("00000032{0}{1}{2}{3}{4}{5}{6}{7}{8}",
-                    Convert.ToByte(ecosystem.toString(),16),
+            String rawTxHex = String.Format("00000032{0:D2}{1:D4}{2:D8}{3}{4}{5}{6}{7}{8}",
+                    ecosystem.intValue(),
                     propertyType.intValue(),
                     previousPropertyId,
-                    toHexString(category),
-                    toHexString(subCategory),
-                    toHexString(label),
-                    toHexString(website),
-                    toHexString(info),
-                    amount);
-            return rawTxHex;
+                    category.toHexString(),
+                    subCategory.toHexString(),
+                    label.toHexString(),
+                    website.toHexString(),
+                    info.toHexString(),
+                    amount.ToHex16());
+            return rawTxHex.ToLower();
         }
 
-        /**
-         * Converts an UTF-8 encoded String into a hexadecimal string representation.
-         *
-         * @param str The string
-         * @return The hexadecimal representation
-         */
-        String toHexString(String str) {
-            byte[] ba = new byte[0];
-            try {
-                ba = Encoding.UTF8.GetBytes(str);
-            } catch (Exception e) {
-                //e.printStackTrace();
-                //throw new RuntimeException(e);
-            }
-            return toHexString(ba);
+        public object createIssuanceHex(long currencyId, long amountDesired, String msg)
+        {
+            String rawTxHex = String.Format("00000037{0}{1}{2}",
+                currencyId.ToHex8(),
+                amountDesired.ToHex16(),
+                msg.toHexString());
+            return rawTxHex.ToLower();
         }
-
-        /**
-         * Converts a byte array into a hexadecimal string representation.
-         *
-         * @param ba The byte array
-         * @return The hexadecimal representation
-         */
-        String toHexString(byte[] ba) {
-            StringBuilder str = new StringBuilder();
-            for (int i = 0; i < ba.Count(); i++) {
-                str.Append(String.Format("{0}", ba[i]));
-            }
-            return str.ToString();
-        }
-
     }
 }
