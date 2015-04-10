@@ -17,6 +17,14 @@ namespace OmniSharpTests
         }
 
         [Test]
+        public void SimpleSendAssetId()
+        {
+            RawTxBuilder builder = new RawTxBuilder();
+            var hex = builder.createSimpleSendHex(34, (long)MoneyUnit.BTC);
+            Assert.AreEqual("00000000000000220000000005f5e100", hex);
+        }
+
+        [Test]
         public void SendToOwners()
         {
             RawTxBuilder builder = new RawTxBuilder(); //TX 3

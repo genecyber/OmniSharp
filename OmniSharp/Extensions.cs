@@ -16,6 +16,16 @@ namespace OmniSharp
             return String.Format("{0:X8}", value);
         }
 
+        public static String ToHex4(this long value)
+        {
+            return String.Format("{0:X4}", value);
+        }
+
+        public static String ToHex6(this long value)
+        {
+            return String.Format("{0:X6}", value);
+        }
+
         public static int ToByte16(this Object obj)
         {
             switch (obj.GetType().ToString())

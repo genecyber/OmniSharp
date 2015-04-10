@@ -14,7 +14,13 @@ namespace OmniSharp.tx
          * Creates a hex-encoded raw transaction of type 0: "Simple Send".
          */
         public String createSimpleSendHex(CurrencyID currencyId, long amount) {
-            String rawTxHex = String.Format("00000000{0:D8}{1}", currencyId.longValue(), amount.ToHex16());
+            String rawTxHex = String.Format("00000000{0}{1}", currencyId.ToHex8(), amount.ToHex16());
+            return rawTxHex.ToLower();
+        }
+
+        public String createSimpleSendHex(long currencyId, long amount)
+        {
+            String rawTxHex = String.Format("00000000{0}{1}", currencyId.ToHex8(), amount.ToHex16());
             return rawTxHex.ToLower();
         }
 
@@ -22,7 +28,7 @@ namespace OmniSharp.tx
          * Creates a hex-encoded raw transaction of type 3: "send to owners".
          */
         public String createSendToOwnersHex(CurrencyID currencyId, long amount) {
-            String rawTxHex = String.Format("00000003{0:D8}{1}", currencyId.longValue(), amount.ToHex16());
+            String rawTxHex = String.Format("00000003{0}{1}", currencyId.ToHex8(), amount.ToHex16());
             return rawTxHex.ToLower();
         }
 
@@ -44,7 +50,7 @@ namespace OmniSharp.tx
             Byte paymentWindow, long commitmentFee, Byte action)
         {
             String rawTxHex = String.Format("00010014{0:D8}{1}{2}{3}{4}{5}",
-                currencyId.longValue(),
+                currencyId.ToHex8(),
                 amountForSale.ToHex16(),
                 amountDesired.ToHex16(),
                 paymentWindow,
@@ -74,7 +80,7 @@ namespace OmniSharp.tx
 
         public object createIssuanceHex(long currencyId, long amountDesired, String msg)
         {
-            String rawTxHex = String.Format("00000037{0}{1}{2}",
+            var rawTxHex = String.Format("00000037{0}{1}{2}",
                 currencyId.ToHex8(),
                 amountDesired.ToHex16(),
                 msg.toHexString());

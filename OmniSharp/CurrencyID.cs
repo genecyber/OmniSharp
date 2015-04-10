@@ -106,6 +106,11 @@ namespace OmniSharp
             return value;
         }
 
+        public String ToHex8()
+        {
+            return value.ToHex8();
+        }
+
         //@Override
         public float floatValue()
         {

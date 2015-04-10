@@ -64,7 +64,6 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyType.cs" />
-    <Compile Include="tx\EncodeMultisig.cs" />
     <Compile Include="tx\RawTxBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
