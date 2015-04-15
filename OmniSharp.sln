@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniSharp", "OmniSharp\OmniSharp.csproj", "{7A68DB65-E519-4833-8B91-BD618AA4C732}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniSharpTests", "OmniSharpTests\OmniSharpTests.csproj", "{BDEA032D-50DC-4823-AD94-D60EA7F8A47A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC56F443-6C1E-4E6F-AC02-433AA5BE18E7}"
+	ProjectSection(SolutionItems) = preProject
+		OmniSharp.js\Index.html = OmniSharp.js\Index.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

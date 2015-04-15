@@ -8,15 +8,15 @@ namespace OmniSharp.tx
     /**
      * Build hex-encoded raw Omni transactions
      */
-    public class RawTxBuilder {
-
+    public class RawTxBuilder
+    {
         /**
          * Creates a hex-encoded raw transaction of type 0: "Simple Send".
          */
-        public String createSimpleSendHex(CurrencyID currencyId, long amount) {
+/*        public String createSimpleSendHex(CurrencyID currencyId, long amount) {
             String rawTxHex = String.Format("00000000{0}{1}", currencyId.ToHex8(), amount.ToHex16());
             return rawTxHex.ToLower();
-        }
+        }*/
 
         public String createSimpleSendHex(long currencyId, long amount)
         {

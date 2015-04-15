@@ -1,0 +1,1 @@
+C:\repo\JSIL\bin\JSILc.exe "../../OmniSharp.sln"
