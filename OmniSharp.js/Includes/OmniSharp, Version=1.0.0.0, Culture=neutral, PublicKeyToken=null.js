@@ -785,7 +785,7 @@ JSIL.DeclareNamespace("OmniSharp.tx");
   function RawTxBuilder_createSendToOwnersHex (currencyId, amount) {
     var rawTxHex = $T03().Format(
       "00000003{0}{1}", 
-      currencyId.ToHex8(), 
+      $T05().ToHex8(currencyId), 
       $T05().ToHex16(amount)
     );
     return rawTxHex.toLowerCase();
@@ -843,7 +843,7 @@ JSIL.DeclareNamespace("OmniSharp.tx");
     );
 
     $.Method({Static:false, Public:true }, "createSendToOwnersHex", 
-      new JSIL.MethodSignature($.String, [$asm01.TypeRef("OmniSharp.CurrencyID"), $.Int64]), 
+      new JSIL.MethodSignature($.String, [$.Int64, $.Int64]), 
       RawTxBuilder_createSendToOwnersHex
     );
 

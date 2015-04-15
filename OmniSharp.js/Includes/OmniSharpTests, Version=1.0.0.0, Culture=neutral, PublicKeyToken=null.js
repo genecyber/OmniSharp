@@ -28,9 +28,6 @@ JSIL.DeclareNamespace("OmniSharpTests");
   var $T06 = function () {
     return ($T06 = JSIL.Memoize($asm00.System.Object)) ();
   };
-  var $T07 = function () {
-    return ($T07 = JSIL.Memoize($asm01.OmniSharp.CurrencyID)) ();
-  };
   var $S00 = function () {
     return ($S00 = JSIL.Memoize(new JSIL.MethodSignature(null, [$asm0A.TypeRef("System.Object"), $asm0A.TypeRef("System.Object")]))) ();
   };
@@ -66,8 +63,10 @@ JSIL.DeclareNamespace("OmniSharpTests");
 
   function TxBuilderTests_SendToOwners () {
     var builder = new ($T00())();
-    var hex = builder.createSendToOwnersHex($T07().Msc, $T04().Create(16113920, 5, 0));
-    $S00().CallStatic($T05(), "AreEqual", null, "00000003000000010000000005f5e100", hex);
+    $S00().CallStatic($T05(), "AreEqual", null, "00000003000000010000000005f5e100", builder.createSendToOwnersHex(
+        $T04().Create(1, 0, 0), 
+        $T04().Create(16113920, 5, 0)
+      ));
   };
 
   function TxBuilderTests_SimpleSendAssetId () {

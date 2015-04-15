@@ -1,18 +1,18 @@
 // JSILc v0.8.921
-// Build took 0004.84 second(s).
+// Build took 0004.96 second(s).
 // The following configuration was used when translating 'C:\repo\OmniSharp\OmniSharpTests\bin\Debug\OmniSharpTests.dll':
 {"ContributingPaths":["C:\\repo\\JSIL\\bin\\defaults.jsilconfig"],"Path":"C:\\repo\\JSIL\\bin","SolutionBuilder":{"Configuration":null,"Platform":null,"Target":null,"LogVerbosity":null,"ExtraOutputs":[]},"AutoLoadConfigFiles":null,"UseLocalProxies":null,"ReuseTypeInfoAcrossAssemblies":null,"ProxyWarnings":false,"OutputDirectory":"%currentdirectory%","FileOutputDirectory":null,"Profile":"Default","ProfileSettings":{"OverwriteExistingContent":true,"ContentOutputDirectory":"%outputdirectory%/Content"},"AnalyzerSettings":{},"CustomVariables":{},"ApplyDefaults":null,"IncludeDependencies":null,"UseSymbols":null,"UseThreads":null,"UseDefaultProxies":null,"GenerateSkeletonsForStubbedAssemblies":null,"GenerateContentManifest":null,"RunBugChecks":null,"TuneGarbageCollection":null,"FilenameEscapeRegex":null,"AssemblyCollectionName":null,"FrameworkVersion":null,"Assemblies":{"TranslateAdditional":[],"Ignored":["Microsoft\\.VisualC,","Accessibility,","SMDiagnostics,","System\\.EnterpriseServices,","System\\.Security,","System\\.Runtime\\.Serialization\\.Formatters\\.Soap,","System\\.Runtime\\.DurableInstancing,","System\\.Data\\.SqlXml,","JSIL\\.Meta,"],"Stubbed":["mscorlib,","^System,","^System\\.(.+),","^Microsoft\\.(.+),","FSharp.Core,"],"Proxies":[],"Redirects":{}},"CodeGenerator":{"EliminateStructCopies":null,"SimplifyOperators":null,"SimplifyLoops":null,"EliminateTemporaries":null,"EliminateRedundantControlFlow":null,"CacheMethodSignatures":null,"CacheGenericMethodSignatures":null,"CacheTypeExpressions":null,"CacheBaseMethodHandles":null,"EliminatePointlessFinallyBlocks":null,"PreferAccessorMethods":null,"HintIntegerArithmetic":null,"EnableThreadedTransforms":null,"FreezeImmutableObjects":null,"EnableUnsafeCode":null,"HoistAllocations":null,"HintDoubleArithmetic":null,"AutoGenerateEventAccessorsInSkeletons":null,"AggressivelyUseElementProxies":null,"EmitAllParameterNames":null}}
 // The configuration was generated from the following configuration files:
 C:\repo\JSIL\bin\defaults.jsilconfig
 // The following outputs were produced:
 mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
 System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
-System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
 System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
-OmniSharpTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
 OmniSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
 System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
-System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
+OmniSharpTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
+System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
 System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
 nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77.js
 System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js

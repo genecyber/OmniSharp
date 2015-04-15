@@ -27,7 +27,7 @@ namespace OmniSharpTests
         public void SendToOwners()
         {
             RawTxBuilder builder = new RawTxBuilder(); //TX 3
-            var hex = builder.createSendToOwnersHex(CurrencyID.Msc, (long)100000000);
+            var hex = builder.createSendToOwnersHex(1, (long)100000000);
             Assert.AreEqual("00000003000000010000000005f5e100", hex);
         }
 

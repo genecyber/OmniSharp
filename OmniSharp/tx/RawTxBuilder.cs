@@ -27,7 +27,8 @@ namespace OmniSharp.tx
         /**
          * Creates a hex-encoded raw transaction of type 3: "send to owners".
          */
-        public String createSendToOwnersHex(CurrencyID currencyId, long amount) {
+        public String createSendToOwnersHex(long currencyId, long amount)
+        {
             String rawTxHex = String.Format("00000003{0}{1}", currencyId.ToHex8(), amount.ToHex16());
             return rawTxHex.ToLower();
         }
