@@ -593,6 +593,225 @@ JSIL.DeclareNamespace("OmniSharp");
 
 })();
 
+JSIL.DeclareNamespace("OmniSharp.math");
+/* class OmniSharp.math.BigInt */ 
+
+(function BigInt$Members () {
+  var $, $thisType;
+  var $T00 = function () {
+    return ($T00 = JSIL.Memoize($asm00.System.String)) ();
+  };
+  var $T01 = function () {
+    return ($T01 = JSIL.Memoize($asm00.System.Int32)) ();
+  };
+  var $T02 = function () {
+    return ($T02 = JSIL.Memoize($asm00.System.Object)) ();
+  };
+
+  function BigInt__ctor (value) {
+    this.BigValue = value;
+    this.Length = (value.length | 0);
+  };
+
+  function BigInt_Add (BigIntegerTwo) {
+    var SumString = "";
+    var CharDifference = (((this.Length | 0) - (BigIntegerTwo.Length | 0)) | 0);
+    var Remainder = 0;
+    if (CharDifference === 0) {
+
+      for (var i = (((this.Length | 0) - 1) | 0); i >= 0; i = ((i - 1) | 0)) {
+        var Top = ((($T01().Parse(this.BigValue.substr(i, 1)) | 0) + Remainder) | 0);
+        var Bottom = ($T01().Parse(BigIntegerTwo.toString().substr(i, 1)) | 0);
+        var Sum = ((Top + Bottom) | 0);
+        if (!((Sum < 10) || (i === 0))) {
+          Sum = ((Sum - 10) | 0);
+          Remainder = 1;
+        } else {
+          Remainder = 0;
+        }
+        SumString = (JSIL.ConcatString((Sum).toString(), SumString));
+      }
+    } else if (CharDifference < 0) {
+      var Pref = (BigIntegerTwo.toString().substr(0, Math.imul(CharDifference, -1)));
+      var Suff = (BigIntegerTwo.toString().substr(Math.imul(CharDifference, -1)));
+
+      for (i = (((Suff.length | 0) - 1) | 0); i >= 0; i = ((i - 1) | 0)) {
+        Top = ((($T01().Parse(this.BigValue.substr(i, 1)) | 0) + Remainder) | 0);
+        Bottom = ($T01().Parse(Suff.substr(i, 1)) | 0);
+        Sum = ((Top + Bottom) | 0);
+        if (Sum >= 10) {
+          Sum = ((Sum - 10) | 0);
+          Remainder = 1;
+        } else {
+          Remainder = 0;
+        }
+        SumString = (JSIL.ConcatString((Sum).toString(), SumString));
+      }
+
+      for (i = (((Pref.length | 0) - 1) | 0); i >= 0; i = ((i - 1) | 0)) {
+        Top = ((($T01().Parse(Pref.substr(i, 1)) | 0) + Remainder) | 0);
+        if (!((Top < 10) || (i === 0))) {
+          Top = ((Top - 10) | 0);
+          Remainder = 1;
+        } else {
+          Remainder = 0;
+        }
+        SumString = (JSIL.ConcatString((Top).toString(), SumString));
+      }
+    } else {
+      Pref = (this.BigValue.substr(0, CharDifference));
+      Suff = (this.BigValue.substr(CharDifference));
+
+      for (i = (((Suff.length | 0) - 1) | 0); i >= 0; i = ((i - 1) | 0)) {
+        Top = ((($T01().Parse(Suff.substr(i, 1)) | 0) + Remainder) | 0);
+        Bottom = ($T01().Parse(BigIntegerTwo.toString().substr(i, 1)) | 0);
+        Sum = ((Top + Bottom) | 0);
+        if (Sum >= 10) {
+          Sum = ((Sum - 10) | 0);
+          Remainder = 1;
+        } else {
+          Remainder = 0;
+        }
+        SumString = (JSIL.ConcatString((Sum).toString(), SumString));
+      }
+
+      for (i = (((Pref.length | 0) - 1) | 0); i >= 0; i = ((i - 1) | 0)) {
+        Top = ((($T01().Parse(Pref.substr(i, 1)) | 0) + Remainder) | 0);
+        if (!((Top < 10) || (i === 0))) {
+          Top = ((Top - 10) | 0);
+          Remainder = 1;
+        } else {
+          Remainder = 0;
+        }
+        SumString = (JSIL.ConcatString((Top).toString(), SumString));
+      }
+    }
+    return new $thisType(SumString);
+  };
+
+  function BigInt_BigMultiply (Limit) {
+    var Product = new $thisType("0");
+    var Count = new $thisType("0");
+    var Increment = new $thisType("1");
+
+    while (Count.LessThan(Limit)) {
+      Product = Product.Add(this);
+      Count = Count.Add(Increment);
+    }
+    return Product;
+  };
+
+  function BigInt_CompareTo (BigIntegerTwo) {
+    var CharDifference = (((this.Length | 0) - (BigIntegerTwo.Length | 0)) | 0);
+    if (CharDifference < 0) {
+      var result = -1;
+    } else if (CharDifference > 0) {
+      result = 1;
+    } else {
+
+      for (var i = 0; i < (this.Length | 0); i = ((i + 1) | 0)) {
+        var ThisValue = ($T01().Parse(this.BigValue.substr(i, 1)) | 0);
+        var ArgValue = ($T01().Parse(BigIntegerTwo.BigValue.substr(i, 1)) | 0);
+        if (ThisValue > ArgValue) {
+          result = 1;
+          return result;
+        }
+        if (ThisValue < ArgValue) {
+          result = -1;
+          return result;
+        }
+      }
+      result = 0;
+    }
+    return result;
+  };
+
+  function BigInt_Equals$00 (BigIntegerTwo) {
+    return ((this.CompareTo(BigIntegerTwo) | 0) === 0);
+  };
+
+  function BigInt_GreaterThan (BigIntegerTwo) {
+    return ((this.CompareTo(BigIntegerTwo) | 0) === 1);
+  };
+
+  function BigInt_LessThan (BigIntegerTwo) {
+    return ((this.CompareTo(BigIntegerTwo) | 0) === -1);
+  };
+
+  function BigInt_Multiply (Limit) {
+    var ProductInt = new $thisType("0");
+
+    for (var Count = 0; Count < (Limit | 0); Count = ((Count + 1) | 0)) {
+      ProductInt = ProductInt.Add(this);
+    }
+    return ProductInt;
+  };
+
+  function BigInt_toString () {
+    return this.BigValue;
+  };
+
+  JSIL.MakeType({
+      BaseType: $asm00.TypeRef("System.Object"), 
+      Name: "OmniSharp.math.BigInt", 
+      IsPublic: true, 
+      IsReferenceType: true, 
+      MaximumConstructorArguments: 1, 
+    }, function ($interfaceBuilder) {
+    $ = $interfaceBuilder;
+
+    $.Method({Static:false, Public:true }, ".ctor", 
+      JSIL.MethodSignature.Action($.String), 
+      BigInt__ctor
+    );
+
+    $.Method({Static:false, Public:true }, "Add", 
+      new JSIL.MethodSignature($.Type, [$.Type]), 
+      BigInt_Add
+    );
+
+    $.Method({Static:false, Public:true }, "BigMultiply", 
+      new JSIL.MethodSignature($.Type, [$.Type]), 
+      BigInt_BigMultiply
+    );
+
+    $.Method({Static:false, Public:false}, "CompareTo", 
+      new JSIL.MethodSignature($.Int32, [$.Type]), 
+      BigInt_CompareTo
+    );
+
+    $.Method({Static:false, Public:true }, "Equals", 
+      new JSIL.MethodSignature($.Boolean, [$.Type]), 
+      BigInt_Equals$00
+    );
+
+    $.Method({Static:false, Public:true }, "GreaterThan", 
+      new JSIL.MethodSignature($.Boolean, [$.Type]), 
+      BigInt_GreaterThan
+    );
+
+    $.Method({Static:false, Public:true }, "LessThan", 
+      new JSIL.MethodSignature($.Boolean, [$.Type]), 
+      BigInt_LessThan
+    );
+
+    $.Method({Static:false, Public:true }, "Multiply", 
+      new JSIL.MethodSignature($.Type, [$.Int32]), 
+      BigInt_Multiply
+    );
+
+    $.Method({Static:false, Public:true , Virtual:true }, "toString", 
+      JSIL.MethodSignature.Return($.String), 
+      BigInt_toString
+    );
+
+    $.Field({Static:false, Public:false}, "BigValue", $.String); 
+    $.Field({Static:false, Public:true }, "Length", $.Int32); 
+    return function (newThisType) { $thisType = newThisType; }; 
+  });
+
+})();
+
 /* class OmniSharp.PropertyType */ 
 
 (function PropertyType$Members () {
@@ -733,28 +952,25 @@ JSIL.DeclareNamespace("OmniSharp.tx");
 (function RawTxBuilder$Members () {
   var $, $thisType;
   var $T00 = function () {
-    return ($T00 = JSIL.Memoize($asm01.OmniSharp.CurrencyID)) ();
+    return ($T00 = JSIL.Memoize($asm00.System.Int64)) ();
   };
   var $T01 = function () {
-    return ($T01 = JSIL.Memoize($asm00.System.Int64)) ();
+    return ($T01 = JSIL.Memoize($asm00.System.Byte)) ();
   };
   var $T02 = function () {
-    return ($T02 = JSIL.Memoize($asm00.System.Byte)) ();
+    return ($T02 = JSIL.Memoize($asm00.System.String)) ();
   };
   var $T03 = function () {
-    return ($T03 = JSIL.Memoize($asm00.System.String)) ();
+    return ($T03 = JSIL.Memoize($asm00.System.Object)) ();
   };
   var $T04 = function () {
-    return ($T04 = JSIL.Memoize($asm00.System.Object)) ();
+    return ($T04 = JSIL.Memoize($asm01.OmniSharp.Extensions)) ();
   };
   var $T05 = function () {
-    return ($T05 = JSIL.Memoize($asm01.OmniSharp.Extensions)) ();
+    return ($T05 = JSIL.Memoize($asm01.OmniSharp.Ecosystem)) ();
   };
   var $T06 = function () {
-    return ($T06 = JSIL.Memoize($asm01.OmniSharp.Ecosystem)) ();
-  };
-  var $T07 = function () {
-    return ($T07 = JSIL.Memoize($asm01.OmniSharp.PropertyType)) ();
+    return ($T06 = JSIL.Memoize($asm01.OmniSharp.PropertyType)) ();
   };
   var $S00 = function () {
     return ($S00 = JSIL.Memoize(new JSIL.MethodSignature($asm00.TypeRef("System.String"), [$asm00.TypeRef("System.String")]))) ();
@@ -764,38 +980,38 @@ JSIL.DeclareNamespace("OmniSharp.tx");
   };
 
   function RawTxBuilder_createDexSellOfferHex (currencyId, amountForSale, amountDesired, paymentWindow, commitmentFee, action) {
-    return $T03().Format("00010014{0:D8}{1}{2}{3}{4}{5}", JSIL.Array.New($T04(), [currencyId.ToHex8(), $T05().ToHex16(amountForSale), $T05().ToHex16(amountDesired), paymentWindow, $T05().ToHex16(commitmentFee), action]));
+    return $T02().Format("00010014{0:D8}{1}{2}{3}{4}{5}", JSIL.Array.New($T03(), [$T04().ToHex8(currencyId), $T04().ToHex16(amountForSale), $T04().ToHex16(amountDesired), paymentWindow, $T04().ToHex16(commitmentFee), action]));
   };
 
   function RawTxBuilder_createIssuanceHex (currencyId, amountDesired, msg) {
-    var rawTxHex = $T03().Format(
+    var rawTxHex = $T02().Format(
       "00000037{0}{1}{2}", 
-      $T05().ToHex8(currencyId), 
-      $T05().ToHex16(amountDesired), 
-      $S00().CallStatic($T05(), "toHexString", null, msg)
+      $T04().ToHex8(currencyId), 
+      $T04().ToHex16(amountDesired), 
+      $S00().CallStatic($T04(), "toHexString", null, msg)
     );
     return rawTxHex.toLowerCase();
   };
 
   function RawTxBuilder_createPropertyHex (ecosystem, propertyType, previousPropertyId, category, subCategory, label, website, info, amount) {
-    var rawTxHex = $T03().Format("00000032{0:D2}{1:D4}{2:D8}{3}{4}{5}{6}{7}{8}", JSIL.Array.New($T04(), [ecosystem.intValue(), propertyType.intValue(), previousPropertyId, $S00().CallStatic($T05(), "toHexString", null, category), $S00().CallStatic($T05(), "toHexString", null, subCategory), $S00().CallStatic($T05(), "toHexString", null, label), $S00().CallStatic($T05(), "toHexString", null, website), $S00().CallStatic($T05(), "toHexString", null, info), $T05().ToHex16(amount)]));
+    var rawTxHex = $T02().Format("00000032{0:D2}{1:D4}{2:D8}{3}{4}{5}{6}{7}{8}", JSIL.Array.New($T03(), [ecosystem.intValue(), propertyType.intValue(), previousPropertyId, $S00().CallStatic($T04(), "toHexString", null, category), $S00().CallStatic($T04(), "toHexString", null, subCategory), $S00().CallStatic($T04(), "toHexString", null, label), $S00().CallStatic($T04(), "toHexString", null, website), $S00().CallStatic($T04(), "toHexString", null, info), $T04().ToHex16(amount)]));
     return rawTxHex.toLowerCase();
   };
 
   function RawTxBuilder_createSendToOwnersHex (currencyId, amount) {
-    var rawTxHex = $T03().Format(
+    var rawTxHex = $T02().Format(
       "00000003{0}{1}", 
-      $T05().ToHex8(currencyId), 
-      $T05().ToHex16(amount)
+      $T04().ToHex8(currencyId), 
+      $T04().ToHex16(amount)
     );
     return rawTxHex.toLowerCase();
   };
 
   function RawTxBuilder_createSimpleSendHex (currencyId, amount) {
-    var rawTxHex = $T03().Format(
+    var rawTxHex = $T02().Format(
       "00000000{0}{1}", 
-      $T05().ToHex8(currencyId), 
-      $T05().ToHex16(amount)
+      $T04().ToHex8(currencyId), 
+      $T04().ToHex16(amount)
     );
     return rawTxHex.toLowerCase();
   };
@@ -816,7 +1032,7 @@ JSIL.DeclareNamespace("OmniSharp.tx");
 
     $.Method({Static:false, Public:true }, "createDexSellOfferHex", 
       new JSIL.MethodSignature($.String, [
-          $asm01.TypeRef("OmniSharp.CurrencyID"), $.Int64, 
+          $.Int64, $.Int64, 
           $.Int64, $.Byte, 
           $.Int64, $.Byte
         ]), 

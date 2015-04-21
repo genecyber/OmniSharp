@@ -77,6 +77,22 @@ JSIL.DeclareNamespace("OmniSharpTests");
       ));
   };
 
+  function TxBuilderTests_SimpleSendAssetIdLowBoundry () {
+    var builder = new ($T00())();
+    $S00().CallStatic($T05(), "AreEqual", null, "00000000000000220000000000000001", builder.createSimpleSendHex(
+        $T04().Create(34, 0, 0), 
+        $T04().Create(1, 0, 0)
+      ));
+  };
+
+  function TxBuilderTests_SimpleSendAssetIdOutsideBoundry () {
+    var builder = new ($T00())();
+    $S00().CallStatic($T05(), "AreEqual", null, "000000000000002222b1f6efc7e77726", builder.createSimpleSendHex(
+        $T04().Create(34, 0, 0), 
+        $T04().Create(15169318, 16183239, 8881)
+      ));
+  };
+
   JSIL.MakeType({
       BaseType: $asm00.TypeRef("System.Object"), 
       Name: "OmniSharpTests.TxBuilderTests", 
@@ -112,6 +128,18 @@ JSIL.DeclareNamespace("OmniSharpTests");
     $.Method({Static:false, Public:true }, "SimpleSendAssetId", 
       JSIL.MethodSignature.Void, 
       TxBuilderTests_SimpleSendAssetId
+    )
+      .Attribute($asm0B.TypeRef("NUnit.Framework.TestAttribute"));
+
+    $.Method({Static:false, Public:true }, "SimpleSendAssetIdLowBoundry", 
+      JSIL.MethodSignature.Void, 
+      TxBuilderTests_SimpleSendAssetIdLowBoundry
+    )
+      .Attribute($asm0B.TypeRef("NUnit.Framework.TestAttribute"));
+
+    $.Method({Static:false, Public:true }, "SimpleSendAssetIdOutsideBoundry", 
+      JSIL.MethodSignature.Void, 
+      TxBuilderTests_SimpleSendAssetIdOutsideBoundry
     )
       .Attribute($asm0B.TypeRef("NUnit.Framework.TestAttribute"));
 

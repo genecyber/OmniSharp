@@ -9,7 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniSharpTests", "OmniSharp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC56F443-6C1E-4E6F-AC02-433AA5BE18E7}"
 	ProjectSection(SolutionItems) = preProject
+		OmniSharp.js\App.js = OmniSharp.js\App.js
 		OmniSharp.js\Index.html = OmniSharp.js\Index.html
+		OmniSharp.js\package.json = OmniSharp.js\package.json
+		OmniSharp.js\SharpBridge.js = OmniSharp.js\SharpBridge.js
 	EndProjectSection
 EndProject
 Global

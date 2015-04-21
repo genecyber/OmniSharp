@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
+using OmniSharp.math;
 
 namespace OmniSharp.tx
 {
@@ -20,6 +19,7 @@ namespace OmniSharp.tx
 
         public String createSimpleSendHex(long currencyId, long amount)
         {
+            //var bigAmount = new BigInt(amount);
             String rawTxHex = String.Format("00000000{0}{1}", currencyId.ToHex8(), amount.ToHex16());
             return rawTxHex.ToLower();
         }
@@ -29,6 +29,7 @@ namespace OmniSharp.tx
          */
         public String createSendToOwnersHex(long currencyId, long amount)
         {
+            //var bigAmount = new BigInt(amount);
             String rawTxHex = String.Format("00000003{0}{1}", currencyId.ToHex8(), amount.ToHex16());
             return rawTxHex.ToLower();
         }
@@ -47,9 +48,13 @@ namespace OmniSharp.tx
          * @return
          */
 
-        public String createDexSellOfferHex(CurrencyID currencyId, long amountForSale, long amountDesired,
+        public String createDexSellOfferHex(long currencyId, long amountForSale, long amountDesired,
             Byte paymentWindow, long commitmentFee, Byte action)
         {
+            /*var bigAmountForSale = new BigInt(amountForSale);
+            var bigAmountDesired = new BigInt(amountDesired);
+            var bigCommitmentFee = new BigInt(commitmentFee);*/
+
             String rawTxHex = String.Format("00010014{0:D8}{1}{2}{3}{4}{5}",
                 currencyId.ToHex8(),
                 amountForSale.ToHex16(),
@@ -81,6 +86,7 @@ namespace OmniSharp.tx
 
         public object createIssuanceHex(long currencyId, long amountDesired, String msg)
         {
+            //var bigAmount = new BigInt(amountDesired);
             var rawTxHex = String.Format("00000037{0}{1}{2}",
                 currencyId.ToHex8(),
                 amountDesired.ToHex16(),

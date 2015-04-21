@@ -7,27 +7,36 @@ namespace OmniSharpTests
     [TestFixture]
     public class TxBuilderTests
     {
-/*        [Test]
-        public void SimpleSend()
-        {
-            RawTxBuilder builder = new RawTxBuilder();
-            var hex = builder.createSimpleSendHex(CurrencyID.Msc, (long) 100000000);
-            Assert.AreEqual("00000000000000010000000005f5e100", hex);
-        }*/
 
         [Test]
         public void SimpleSendAssetId()
         {
             RawTxBuilder builder = new RawTxBuilder();
-            var hex = builder.createSimpleSendHex(34, (long)100000000);
+            var hex = builder.createSimpleSendHex(34, 100000000);
             Assert.AreEqual("00000000000000220000000005f5e100", hex);
+        }
+
+        [Test]
+        public void SimpleSendAssetIdOutsideBoundry()
+        {
+            RawTxBuilder builder = new RawTxBuilder();
+            var hex = builder.createSimpleSendHex(1, 2500050777878787878);
+            Assert.AreEqual("000000000000002222b1f6efc7e77726", hex);
+        }
+
+        [Test]
+        public void SimpleSendAssetIdLowBoundry()
+        {
+            RawTxBuilder builder = new RawTxBuilder();
+            var hex = builder.createSimpleSendHex(34, 1);
+            Assert.AreEqual("00000000000000220000000000000001", hex);
         }
 
         [Test]
         public void SendToOwners()
         {
             RawTxBuilder builder = new RawTxBuilder(); //TX 3
-            var hex = builder.createSendToOwnersHex(1, (long)100000000);
+            var hex = builder.createSendToOwnersHex(1, 100000000);
             Assert.AreEqual("00000003000000010000000005f5e100", hex);
         }
 
@@ -35,7 +44,7 @@ namespace OmniSharpTests
         public void CreateSmartProperty() //TX 50
         {
             RawTxBuilder builder = new RawTxBuilder();
-            var hex = builder.createPropertyHex(Ecosystem.Msc, PropertyType.INDIVISIBLE, 0, "Companies", "Bitcoin Mining", "Quantum Miner", "tinyurl.com/kwejgoig", "", (long)100000000);
+            var hex = builder.createPropertyHex(Ecosystem.Msc, PropertyType.INDIVISIBLE, 0, "Companies", "Bitcoin Mining", "Quantum Miner", "tinyurl.com/kwejgoig", "", 100000000);
             Assert.AreEqual("0000003201000100000000436f6d70616e69657300426974636f696e204d696e696e67005175616e74756d204d696e65720074696e7975726c2e636f6d2f6b77656a676f696700000000000005f5e100", hex);
         }
 

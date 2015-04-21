@@ -15,7 +15,7 @@ var $asm09 = JSIL.GetAssembly("System.Security, Version=4.0.0.0, Culture=neutral
 if (typeof (contentManifest) !== "object") { JSIL.GlobalNamespace.contentManifest = {}; };
 contentManifest["OmniSharp.dll"] = [
     ["Script", "System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 87789 }],
-    ["Script", "OmniSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js", { "sizeBytes": 29624 }],
+    ["Script", "OmniSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js", { "sizeBytes": 36357 }],
     ["Script", "System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js", { "sizeBytes": 671799 }],
     ["Script", "System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 3094219 }],
     ["Script", "System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 4653391 }],

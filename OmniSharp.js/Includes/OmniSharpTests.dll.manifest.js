@@ -22,12 +22,12 @@ var $asm10 = JSIL.GetAssembly("System.Data.SqlXml, Version=2.0.0.0, Culture=neut
 if (typeof (contentManifest) !== "object") { JSIL.GlobalNamespace.contentManifest = {}; };
 contentManifest["OmniSharpTests.dll"] = [
     ["Script", "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 10012487 }],
-    ["Script", "System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js", { "sizeBytes": 671799 }],
-    ["Script", "System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 6805155 }],
-    ["Script", "System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 3094219 }],
-    ["Script", "OmniSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js", { "sizeBytes": 29624 }],
+    ["Script", "OmniSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js", { "sizeBytes": 36357 }],
     ["Script", "System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 87789 }],
-    ["Script", "OmniSharpTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js", { "sizeBytes": 4269 }],
+    ["Script", "System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 6805155 }],
+    ["Script", "OmniSharpTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js", { "sizeBytes": 5364 }],
+    ["Script", "System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 3094219 }],
+    ["Script", "System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js", { "sizeBytes": 671799 }],
     ["Script", "System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js", { "sizeBytes": 4653391 }],
     ["Script", "System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js", { "sizeBytes": 621970 }],
     ["Script", "nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77.js", { "sizeBytes": 977828 }],
